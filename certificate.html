@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Page</title>
+    <link rel="stylesheet" href="css/certificate.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <a href="subject.html">
+                <img src="/img/logo.png" class="logo">
+            </a>
+            <ul>
+                <li><a href="subject.html">Tags</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+            </ul>
+            <img src="/img/user.png" class="user-pic" onclick="toggleMenu()">
+
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="uer-info">
+                        <img src="img/user.png" id="avatar">
+                        <h2 id="username"></h2>
+                    </div>
+                    <hr>
+
+                    <a href="userdetail.html" class="sub-menu-link">
+                        <img src="img/profile.png">
+                        <p>Profile</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="membership.html" class="sub-menu-link">
+                        <img src="img/membership.png">
+                        <p>Membership</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="certificate.html" class="sub-menu-link">
+                        <img src="img/certificate.png">
+                        <p>Certificate</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="history.html" class="sub-menu-link">
+                        <img src="img/circular-clock.png">
+                        <p>History</p>
+                        <span>></span>
+                    </a>
+
+                    <hr>
+
+                    <a href="login.html" class="sub-menu-link" id="logout" onclick="logout()">
+                        <img src="img/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- <button class="download-pdf" id="download-pdf-button" onclick="generatePDF">Download PDF</button> -->
+        
+        <div class="course-details">
+            <div class="certificate-details" id="content-to-convert">
+                <img src="/img/logo.png" class="logo-certificate">
+                <h1 class="certificate-text">Certificate of Appreciated</h1>
+                <h3 class="certificate-text-1">This certifies presented to</h3>
+                <!-- <div id="certificateList"></div> -->
+                <h1 class="firstname"></h1>
+                <h1 class="lastname"></h1>
+                <h1 class="course-name"></h1>
+                <h1 class="date"></h1>
+            </div>
+            <img src="img/paw_cat.png" class="cat-paw">
+            <h4 class="line">--------------------------------</h4>
+            <h5 class="signature">Neko Skill</h5>
+
+        </div>
+
+    </div>
+
+    <script src="js/certificate.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/logout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // ดึง Username จาก LocalStorage
+          const username = localStorage.getItem('Username');
+          const userid = localStorage.getItem('UserID');
+  
+          // ตรวจสอบว่ามี Username ใน LocalStorage หรือไม่
+          if (username) {
+            // ถ้ามี Username, ให้แสดงใน <h2>
+            document.getElementById('username').textContent = username;
+          } else {
+            // ถ้าไม่มี Username, คุณสามารถดำเนินการตามที่คุณต้องการ
+            console.log('ไม่พบข้อมูล Username');
+          }
+
+          if (userid) {
+        // ถ้ามี UserID, คุณสามารถเพิ่ม userid เข้าไปใน URL ของลิงค์
+            var userDetailLink = document.querySelector('.sub-menu-link');
+            if (userDetailLink) {
+                userDetailLink.href = `userdetail.html?userid=${userid}`;
+            }
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    
+</body>
+</html>

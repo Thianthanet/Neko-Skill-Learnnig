@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Page</title>
+    <link rel="stylesheet" href="css/subject.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    
+    <div class="hero">
+        <nav>
+            <a href="subject.html">
+                <img src="/img/logo.png" class="logo">
+            </a>
+            <ul>
+                <li><a href="subject.html">Tags</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+            </ul>
+            <img src="/img/user.png" class="user-pic" onclick="toggleMenu()">
+
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="uer-info">
+                        <img src="img/user.png" id="avatar">
+                        <h2 id="username"></h2>
+                    </div>
+                    <hr>
+
+                    <a href="userdetail.html" class="sub-menu-link">
+                        <img src="img/profile.png">
+                        <p>Profile</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="membership.html" class="sub-menu-link">
+                        <img src="img/membership.png">
+                        <p>Membership</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="certificate.html" class="sub-menu-link">
+                        <img src="img/certificate.png">
+                        <p>Certificate</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="history.html" class="sub-menu-link">
+                        <img src="img/circular-clock.png">
+                        <p>History</p>
+                        <span>></span>
+                    </a>
+
+                    <hr>
+
+                    <a href="login.html" class="sub-menu-link" id="logout" onclick="logout()">
+                        <img src="img/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="icon-subject m-5">
+            <div class="subject">
+                <a href="course.html?catalogid=1" class="a-link" data-catalogid="1">
+                    <img src="img/math-book.png" alt="icon" class="pr-50 pl-50 pt-10" width="200" height="200">
+                    <h1 class="sub-text">Math</h1>
+                </a>
+                
+                <a href="course.html?catalogid=5" class="a-link" data-catalogid="5">
+                    <img src="img/english.png" alt="icon" class="pr-500 pl-50 pt-10" width="200" height="200">
+                    <h1 class="sub-text">English</h1>
+                </a>
+                
+                <a href="course.html?catalogid=4" class="a-link" data-catalogid="4">
+                    <img src="img/japanese language.png" alt="icon" class="pr-500 pl-50 pt-10" width="200" height="200">
+                    <h1 class="sub-text">Japanese</h1>
+                </a>
+            </div>
+
+            <div class="subject">
+                <a href="course.html?catalogid=3" class="a-link" data-catalogid="3">
+                    <img src="img/medical-records.png" alt="icon" class="pr-500 pl-50 pt-10" width="200" height="200">
+                    <h1 class="sub-text">Meddent</h1>
+                </a>
+                
+                <a href="course.html?catalogid=2" class="a-link" data-catalogid="2">
+                    <img src="img/physics.png" alt="icon" class="pr-500 pl-50 pt-10" width="200" height="200">
+                    <h1 class="sub-text">Physics</h1>
+                </a>
+                
+                <a href="course.html?catalogid=6" class="a-link" data-catalogid="6">
+                    <img src="img/programming.png" alt="icon" class="pr-500 pl-50 pt-10" width="200" height="200">
+                    <h1 class="sub-text">Programming</h1>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/login.js"></script>
+    <script src="js/subject.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/course.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // ดึง Username จาก LocalStorage
+          const username = localStorage.getItem('Username');
+          const userid = localStorage.getItem('UserID');
+  
+          // ตรวจสอบว่ามี Username ใน LocalStorage หรือไม่
+          if (username) {
+            // ถ้ามี Username, ให้แสดงใน <h2>
+            document.getElementById('username').textContent = username;
+          } else {
+            // ถ้าไม่มี Username, คุณสามารถดำเนินการตามที่คุณต้องการ
+            console.log('ไม่พบข้อมูล Username');
+          }
+
+          if (userid) {
+        // ถ้ามี UserID, คุณสามารถเพิ่ม userid เข้าไปใน URL ของลิงค์
+        var userDetailLink = document.querySelector('.sub-menu-link');
+        if (userDetailLink) {
+            userDetailLink.href = `userdetail.html?userid=${userid}`;
+        }
+        }
+        });
+    </script>
+
+</body>
+</html>
